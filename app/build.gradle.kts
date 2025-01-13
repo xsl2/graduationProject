@@ -42,6 +42,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    //UI框架，主要是用他的工具类，也可以单独拷贝出来
+    //https://qmuiteam.com/android/get-started
+    implementation("com.qmuiteam:qmui:2.1.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

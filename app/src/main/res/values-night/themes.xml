@@ -1,7 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.SchoolHelper" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!--    状态栏颜色-->
+        <item name="android:statusBarColor">@color/black80</item>
+        <!--    白天模式主题背景-->
+        <item name="android:colorBackground">@color/black17</item>
     </style>
+
+    <style name="Theme.SchoolHelper" parent="Base.Theme.SchoolHelper" />
 </resources>

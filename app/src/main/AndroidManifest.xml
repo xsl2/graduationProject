@@ -15,7 +15,7 @@
 
         <!--region 启动界面-->
         <activity
-            android:name=".splash.SplashActivity"
+            android:name=".component.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

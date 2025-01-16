@@ -6,6 +6,11 @@
         <item name="android:statusBarColor">@color/white</item>
         <!--    白天模式主题背景-->
         <item name="android:colorBackground">@color/white</item>
+        <!--文字默认主题色调-->
+        <item name="colorOnSurface">@color/black40</item>
+        <!--按钮默认主色调-->
+        <item name="colorPrimary">@color/primary</item>
+
     </style>
 
     <style name="Theme.SchoolHelper" parent="Base.Theme.SchoolHelper" />

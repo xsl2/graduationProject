@@ -8,7 +8,6 @@ import com.example.schoolhelper.activity.BaseLogicActivity
 import com.example.superui.date.SuperDateUtil
 import com.example.superui.util.SuperDarkUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
-
 /**
  * 启动界面
  *
@@ -20,7 +19,7 @@ class SplashActivity : BaseLogicActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
+        showTermServiceAgreementDialog()
 
     }
 
@@ -34,7 +33,10 @@ class SplashActivity : BaseLogicActivity() {
 
     override fun initDatum() {
         super.initDatum()
-
         tv_author.text = "designed by xsl ${SuperDateUtil.currentYear()}"
+    }
+    private fun showTermServiceAgreementDialog()
+    {
+        TermServiceDialogFragment.show(supportFragmentManager)
     }
 }

@@ -1,12 +1,9 @@
 package com.example.schoolhelper.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.IdRes
 
-abstract class BaseCommonFragment:BaseDialogFragment() {
+abstract class BaseCommonDialogFragment:BaseDialogFragment() {
 
         /*findViewById() 是 Activity 和 View 中的一个方法，用于查找视图控件。Fragment 本身并不直接持有视图，
         它的视图是由 onCreateView() 方法创建并返回的。因此，Fragment 必须通过 getView() 或 requireView() 获取其视图，

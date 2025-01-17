@@ -6,56 +6,49 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.FragmentManager
 import com.example.schoolhelper.R
-import com.example.schoolhelper.fragment.BaseCommonFragment
+import com.example.schoolhelper.databinding.FragmentDialogTermServiceBinding
+import com.example.schoolhelper.fragment.BaseViewModelDialogFragment
 import com.example.superui.process.SuperProcessUtil
 import com.example.superui.util.ScreenUtil
 import com.example.superui.util.SuperTextUtil
 
-class TermServiceDialogFragment :BaseCommonFragment() {
+class TermServiceDialogDialogFragment :BaseViewModelDialogFragment<FragmentDialogTermServiceBinding>() {
     private lateinit var onAgreementClickListener: View.OnClickListener
-    private lateinit var disagreeButton: Button
-    private lateinit var primaryButton: Button
-    private lateinit var contentView:TextView
-    override fun getLayoutView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_dialog_term_service,container,false)
-    }
+//    override fun getLayoutView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        return inflater.inflate(R.layout.fragment_dialog_term_service,container,false)
+//    }
 
     override fun initViews() {
         super.initViews()
         //点击弹窗外面不可关闭
         isCancelable=false
-        contentView = findViewById<TextView>(R.id.content)
-        SuperTextUtil.setLinkColor(contentView,getColor(requireContext(),R.color.link))
-        primaryButton = findViewById<Button>(R.id.primary)
-        disagreeButton = findViewById<Button>(R.id.disagree)
+        SuperTextUtil.setLinkColor(binding.content,getColor(requireContext(),R.color.link))
 
     }
 
     override fun initDatum() {
         super.initDatum()
         val content=Html.fromHtml(getString(R.string.term_service_privacy_content))
-        contentView.text=content
+        binding.content.text=content
     }
 
     override fun initListeners() {
         super.initListeners()
         //同意按钮点击
-        primaryButton.setOnClickListener {
+        binding.primary.setOnClickListener {
             dismiss()
             onAgreementClickListener.onClick(it)
         }
 
         //不同意按钮点击
-        disagreeButton.setOnClickListener {
+        binding.disagree.setOnClickListener {
             dismiss()
             SuperProcessUtil.killApp()
         }
@@ -75,7 +68,7 @@ class TermServiceDialogFragment :BaseCommonFragment() {
          * 显示对话框
          */
         fun show(supportFragmentManager: FragmentManager, onAgreemnetClickListener: View.OnClickListener) {
-            val dialogFragment= TermServiceDialogFragment()
+            val dialogFragment= TermServiceDialogDialogFragment()
             dialogFragment.onAgreementClickListener=onAgreemnetClickListener
             dialogFragment.show(supportFragmentManager,"TermServiceDialogFragment")
         }

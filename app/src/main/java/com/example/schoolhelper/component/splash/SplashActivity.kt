@@ -1,13 +1,10 @@
 package com.example.schoolhelper.component.splash
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.os.Build
-import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import com.example.schoolhelper.R
-import com.example.schoolhelper.activity.BaseLogicActivity
+import com.example.schoolhelper.activity.BaseViewModelActivity
 import com.example.schoolhelper.databinding.ActivitySplashBinding
 import com.example.schoolhelper.util.DefaultPreferenceUtil
 import com.example.superui.date.SuperDateUtil
@@ -18,17 +15,17 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper
  * 启动界面
  *
  */
-class SplashActivity : BaseLogicActivity() {
+class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
     private lateinit var tv_author:TextView
-    private lateinit var binding:ActivitySplashBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-//        showTermServiceAgreementDialog()
-
-    }
+//    private lateinit var binding:ActivitySplashBinding
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_splash)
+//        binding = ActivitySplashBinding.inflate(layoutInflater)
+////        showTermServiceAgreementDialog()
+//
+//    }
 
     override fun initViews() {
         super.initViews()
@@ -50,7 +47,6 @@ class SplashActivity : BaseLogicActivity() {
         {
             showTermServiceAgreementDialog()
         }
-
     }
     private fun requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -91,7 +87,7 @@ class SplashActivity : BaseLogicActivity() {
 
     private fun showTermServiceAgreementDialog()
     {
-        TermServiceDialogFragment.show(supportFragmentManager
+        TermServiceDialogDialogFragment.show(supportFragmentManager
         ) { Log.d(TAG, "onClick: primary")
             DefaultPreferenceUtil.getInstance(this).setAcceptTermsServiceAgreement()
         }

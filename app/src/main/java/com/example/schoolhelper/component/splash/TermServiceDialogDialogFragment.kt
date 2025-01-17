@@ -1,8 +1,5 @@
 package com.example.schoolhelper.component.splash
-
-import android.os.Bundle
 import android.text.Html
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager

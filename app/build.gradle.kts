@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
-
+//apply("../common.gradle.kts")
 android {
     namespace = "com.example.schoolhelper"
     compileSdk = 34

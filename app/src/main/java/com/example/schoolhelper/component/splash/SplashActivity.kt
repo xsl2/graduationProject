@@ -7,7 +7,6 @@ import android.widget.TextView
 import com.example.schoolhelper.activity.BaseViewModelActivity
 import com.example.schoolhelper.databinding.ActivitySplashBinding
 import com.example.schoolhelper.util.DefaultPreferenceUtil
-import com.example.super_k.util.StringUtil
 import com.example.superui.date.SuperDateUtil
 import com.example.superui.util.SuperDarkUtil
 import com.permissionx.guolindev.PermissionX

@@ -26,4 +26,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SchoolHelper"
 include(":app")
- 
+include(":super-k")

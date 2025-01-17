@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.example.schoolhelper.activity.BaseViewModelActivity
 import com.example.schoolhelper.databinding.ActivitySplashBinding
 import com.example.schoolhelper.util.DefaultPreferenceUtil
+import com.example.super_k.util.StringUtil
 import com.example.superui.date.SuperDateUtil
 import com.example.superui.util.SuperDarkUtil
 import com.permissionx.guolindev.PermissionX
@@ -33,6 +34,7 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
         QMUIStatusBarHelper.translucent(this)
         if (SuperDarkUtil.isDark(this)) QMUIStatusBarHelper.setStatusBarDarkMode(this) else QMUIStatusBarHelper.setStatusBarLightMode(this)
 //        tv_author=findViewById<TextView>(R.id.tv_author)
+
     }
 
     override fun initDatum() {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SchoolHelper</string>
+    <string name="app_name">校园小助手</string>
     <!--版权文本-->
     <string name="copyright" translatable="false">Copyright © %1$d Ixuea. All Rights Reserved</string>
 

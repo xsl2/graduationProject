@@ -5,6 +5,9 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 
 //设置偏好工具类
+/*
+* 系统默认骗好工具，本项目中只保存一个值用来判断是否同意相关协议，TERMS_SERVICE
+* */
 class DefaultPreferenceUtil(context: Context) {
     private  var context: Context = context.applicationContext
     private val preference: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context)

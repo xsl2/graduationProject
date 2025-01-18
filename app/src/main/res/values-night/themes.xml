@@ -7,7 +7,13 @@
         <item name="android:colorBackground">@color/black17</item>
 
         <item name="colorOnSurface">@color/black183</item>
+
+        <item name="colorLightWhite">@color/black183</item>
+
     </style>
+
+
+
 
     <style name="Theme.SchoolHelper" parent="Base.Theme.SchoolHelper" />
 </resources>

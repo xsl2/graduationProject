@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.TextView
 import com.example.schoolhelper.activity.BaseViewModelActivity
 import com.example.schoolhelper.databinding.ActivitySplashBinding
+import com.example.schoolhelper.component.guide.GuideActivity
 import com.example.schoolhelper.util.DefaultPreferenceUtil
 import com.example.superui.date.SuperDateUtil
 import com.example.superui.util.SuperDarkUtil
@@ -73,7 +74,10 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
             )
         }.request { allGranted, grantedList, deniedList ->
             if (allGranted) {
+                //暂缓一秒进入应用
+                binding.root.postDelayed({
                     prepareNext()
+                }, 1000)
             } else {
                 //可以在这里弹出提示告诉用户为什么需要权限
                 finish()
@@ -82,6 +86,17 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
     }
     private fun prepareNext() {
         Log.d(TAG, "prepareNext: ")
+        startActivityAfterFinishThis(GuideActivity::class.java)
+//        if(PreferenceUtil.isShowGuide())//true是要显示引导界面，如果引导界面已经实现过或者登录过就为false了
+//        {
+//            startActivityAfterFinishThis(GuideActivity::class.java)
+//            return
+//        }
+//        else
+//        {
+//            //已经加载过引导了，进行登录后的主界面
+//        }
+
     }
 
 

@@ -13,8 +13,14 @@ class GuideAdapter(val context:Context,fragmentManager:FragmentManager): Fragmen
     }
 
     override fun getItem(position: Int): Fragment {
-        TODO("Not yet implemented")
+        return GuideFragment.newInstance(datum[position])
 
+    }
+
+    fun setDatum(datum: MutableList<Int>) {
+        this.datum.clear()
+        this.datum.addAll(datum)
+        notifyDataSetChanged()
     }
 
 }

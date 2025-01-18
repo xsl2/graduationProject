@@ -58,7 +58,13 @@ dependencies {
 
     implementation(project(":super-k"))
 
+    //圆形指示器
+    //https://github.com/ongakuer/CircleIndicator
+    implementation("me.relex:circleindicator:2.1.6")
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }

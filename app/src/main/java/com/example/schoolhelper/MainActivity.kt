@@ -1,20 +1,19 @@
 package com.example.schoolhelper
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.schoolhelper.activity.BaseViewModelActivity
+import com.example.schoolhelper.component.login.LoginHomeActivity
+import com.example.schoolhelper.databinding.ActivityMainBinding
+import com.example.schoolhelper.util.Constant
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
+    override fun initDatum() {
+        super.initDatum()
+        val action=intent.action
+        if(Constant.ACTION_LOGIN==action)
+        {
+            startActivity(LoginHomeActivity::class.java)
         }
+
+
     }
 }

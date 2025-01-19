@@ -4,10 +4,12 @@ import android.Manifest
 import android.os.Build
 import android.util.Log
 import android.widget.TextView
+import com.example.schoolhelper.MainActivity
 import com.example.schoolhelper.activity.BaseViewModelActivity
 import com.example.schoolhelper.databinding.ActivitySplashBinding
 import com.example.schoolhelper.component.guide.GuideActivity
 import com.example.schoolhelper.util.DefaultPreferenceUtil
+import com.example.schoolhelper.util.PreferenceUtil
 import com.example.superui.date.SuperDateUtil
 import com.example.superui.util.SuperDarkUtil
 import com.permissionx.guolindev.PermissionX
@@ -17,16 +19,7 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper
  *
  */
 class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
-    private lateinit var tv_author:TextView
-//    private lateinit var binding:ActivitySplashBinding
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_splash)
-//        binding = ActivitySplashBinding.inflate(layoutInflater)
-////        showTermServiceAgreementDialog()
-//
-//    }
+//    private lateinit var tv_author:TextView
 
     override fun initViews() {
         super.initViews()
@@ -86,16 +79,12 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
     }
     private fun prepareNext() {
         Log.d(TAG, "prepareNext: ")
-        startActivityAfterFinishThis(GuideActivity::class.java)
-//        if(PreferenceUtil.isShowGuide())//true是要显示引导界面，如果引导界面已经实现过或者登录过就为false了
-//        {
-//            startActivityAfterFinishThis(GuideActivity::class.java)
-//            return
-//        }
-//        else
-//        {
-//            //已经加载过引导了，进行登录后的主界面
-//        }
+        if(PreferenceUtil.isShowGuide())
+        {
+            startActivityAfterFinishThis(GuideActivity::class.java)
+            return
+        }
+        startActivityAfterFinishThis(MainActivity::class.java)
 
     }
 

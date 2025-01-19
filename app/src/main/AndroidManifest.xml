@@ -33,11 +33,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolHelper"
         tools:targetApi="31">
-
+        <activity
+            android:name=".component.login.LoginHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".component.login.LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".component.guide.GuideActivity"
-            android:exported="false" />
-        <!-- region 启动界面 -->
+            android:exported="false" /> <!-- region 启动界面 -->
         <activity
             android:name=".component.splash.SplashActivity"
             android:exported="true">

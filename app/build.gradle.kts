@@ -36,6 +36,36 @@ android {
     viewBinding {
         enable=true
     }
+    buildFeatures {
+        buildConfig = true
+    }
+    // 配置不同的环境
+    flavorDimensions("default")  // 添加 flavor dimension
+
+    // 配置不同的环境
+    productFlavors {
+        // 本地开发环境
+        create("local") {
+            buildConfigField("String", "ENDPOINT", "\"http://192.168.209.1:8080/\"")
+            buildConfigField("String", "RESOURCE_ENDPOINT", "\"http://cours e-music-dev.ixuea.com/%s\"")
+            dimension = "default"
+        }
+
+        // 开发环境
+        create("dev") {
+            buildConfigField("String", "ENDPOINT", "\"https://news-api-course.ixuea.com/\"")
+            buildConfigField("String", "RESOURCE_ENDPOINT", "\"http://course-music-dev.ixuea.com/%s\"")
+            dimension = "default"
+        }
+
+        // 正式环境
+        create("prod") {
+            buildConfigField("String", "ENDPOINT", "\"https://news-api-prod-course.ixuea.com/\"")
+            buildConfigField("String", "RESOURCE_ENDPOINT", "\"http://course-music.ixuea.com/%s\"")
+            dimension = "default"
+        }
+    }
+
 }
 
 dependencies {
@@ -61,6 +91,33 @@ dependencies {
     //圆形指示器
     //https://github.com/ongakuer/CircleIndicator
     implementation("me.relex:circleindicator:2.1.6")
+
+    //region 请求网络相关
+    //提示：region这种语法是最新的，推荐使用这种，也更容易阅读，不建议在同一个文件同时使用
+    //因为可能会显示出错
+    //okhttp
+    //https://github.com/square/okhttp
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+
+    //用来打印okhttp请求日志
+    //当然也可以自定义
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+
+    //retrofit
+    //https://github.com/square/retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+
+    //使用gson解析json
+    //https://github.com/google/gson
+    implementation ("com.google.code.gson:gson:2.9.1")
+
+    //适配retrofit使用gson解析
+    //版本要和retrofit一样
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    //endregion
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+
 
 
     testImplementation(libs.junit)

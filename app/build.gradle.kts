@@ -118,6 +118,12 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
+    implementation(libs.androidx.room.common)
+    //apache common lang3工具包
+    //提供了StringUtils等这样的类
+    //http://commons.apache.org/proper/commons-lang/
+    implementation ("org.apache.commons:commons-lang3:3.8")
+
 
 
     testImplementation(libs.junit)

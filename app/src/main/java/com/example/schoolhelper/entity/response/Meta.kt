@@ -1,4 +1,4 @@
-package com.example.schoolhelper.entity
+package com.example.schoolhelper.entity.response
 
 /**
  * 解析列表分页

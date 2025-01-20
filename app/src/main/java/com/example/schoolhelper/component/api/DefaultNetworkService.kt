@@ -1,5 +1,8 @@
 package com.example.schoolhelper.component.api
 
+import com.example.schoolhelper.component.content.Content
+import com.example.schoolhelper.entity.response.DetailResponse
+import com.example.schoolhelper.entity.response.ListResponse
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -18,21 +21,21 @@ interface DefaultNetworkService {
      *
      * @return
      */
-//    @GET("v1/contents")
-//    suspend fun contents(
-//        @Query(value = "last") last: String?,
-//        @Query(value = "category_id") categoryId: String?,
-//        @Query(value = "user_id") userId: String?,
-//        @Query(value = "size") size: Int,
-//        @Query(value = "style") style: Int? = null,
-//    ): ListResponse<Content>
+    @GET("v1/contents")
+    suspend fun contents(
+        @Query(value = "last") last: String?,
+        @Query(value = "category_id") categoryId: String?,
+        @Query(value = "user_id") userId: String?,
+        @Query(value = "size") size: Int,
+        @Query(value = "style") style: Int? = null,
+    ): ListResponse<Content>
 
-//    /**
-//     * 内容详情
-//     */
-//    @GET("v1/contents/{id}")
-//    suspend fun contentDetail(@Path("id") id: String): DetailResponse<Content>
-//
+    /**
+     * 内容详情
+     */
+    @GET("v1/contents/{id}")
+    suspend fun contentDetail(@Path("id") id: String): DetailResponse<Content>
+
 //    @GET("v1/users/{id}")
 //    suspend fun userDetail(@Path("id") id: String): DetailResponse<User>
 //

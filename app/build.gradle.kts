@@ -124,6 +124,11 @@ dependencies {
     //http://commons.apache.org/proper/commons-lang/
     implementation ("org.apache.commons:commons-lang3:3.8")
 
+    //类似TabLayout的控件
+    //https://github.com/angcyo/DslTabLayout
+    implementation ("com.github.angcyo.DslTablayout:TabLayout:3.5.3")
+    implementation ("com.github.angcyo.DslTablayout:ViewPager2Delegate:3.5.3")
+
 
 
     testImplementation(libs.junit)

@@ -2,7 +2,6 @@ package com.example.schoolhelper.entity
 
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.room.PrimaryKey
 
 /**
  * 所有模型Id父类

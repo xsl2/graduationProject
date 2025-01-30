@@ -3,8 +3,7 @@ package com.example.schoolhelper.component.splash
 import android.Manifest
 import android.os.Build
 import android.util.Log
-import android.widget.TextView
-import com.example.schoolhelper.MainActivity
+import com.example.schoolhelper.component.main.MainActivity
 import com.example.schoolhelper.activity.BaseViewModelActivity
 import com.example.schoolhelper.databinding.ActivitySplashBinding
 import com.example.schoolhelper.component.guide.GuideActivity
@@ -65,7 +64,7 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
             )
-        }.request { allGranted, grantedList, deniedList ->
+        }.request { allGranted, _, _ ->
             if (allGranted) {
                 //暂缓一秒进入应用
                 binding.root.postDelayed({

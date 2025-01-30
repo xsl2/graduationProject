@@ -1,7 +1,7 @@
 package com.example.schoolhelper.component.guide
 import android.content.Intent
 import android.util.Log
-import com.example.schoolhelper.MainActivity
+import com.example.schoolhelper.component.main.MainActivity
 import com.example.schoolhelper.R
 import com.example.schoolhelper.activity.BaseViewModelActivity
 import com.example.schoolhelper.config.Config
@@ -44,7 +44,7 @@ class GuideActivity : BaseViewModelActivity<ActivityGuideBinding>() {
             Log.d(TAG, "initListeners: loginOrRegister")
             //跳转到登录与注册页面
             setShowGuide()
-            val intent= Intent(this,MainActivity::class.java)
+            val intent= Intent(this, MainActivity::class.java)
             intent.action=Constant.ACTION_LOGIN
             startActivity(intent)
             finish()

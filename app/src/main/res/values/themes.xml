@@ -11,6 +11,8 @@
         <!--按钮默认主色调-->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorLightWhite">@color/white</item>
+        <!-- 分割线颜色 -->
+        <item name="colorDivider">@color/black183</item>
 
     </style>
 

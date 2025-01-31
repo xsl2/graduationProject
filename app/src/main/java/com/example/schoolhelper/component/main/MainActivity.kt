@@ -10,10 +10,10 @@ import com.example.schoolhelper.util.Constant
 
 class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
     override fun initDatum() {
-        binding.apply {
-            pager.offscreenPageLimit= indicatorTitles.size
-            pager.adapter=MainAdapter(this@MainActivity, indicatorTitles.size)
-        }
+//        binding.apply {
+//            pager.offscreenPageLimit= indicatorTitles.size
+//            pager.adapter=MainAdapter(this@MainActivity, indicatorTitles.size)
+//        }
 
         //底部tab
         for (i in indicatorTitles.indices) {
@@ -23,7 +23,7 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
                 binding.indicator.addView(root)
             }
         }
-//        ViewPager2Delegate.install(binding.pager,binding.indicator,false)
+        ViewPager2Delegate.install(binding.pager,binding.indicator,false)
 
         super.initDatum()
         val action=intent.action

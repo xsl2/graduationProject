@@ -84,7 +84,6 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
             return
         }
         startActivityAfterFinishThis(MainActivity::class.java)
-
     }
 
 

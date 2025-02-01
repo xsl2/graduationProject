@@ -55,7 +55,7 @@ class TermServiceDialogDialogFragment :BaseViewModelDialogFragment<FragmentDialo
     override fun onResume() {
         super.onResume()
         val params:ViewGroup.LayoutParams=dialog!!.window!!.attributes
-        params.width=((ScreenUtil.getScreenWith(requireContext())*0.9).toInt())
+        params.width=((ScreenUtil.getScreenWidth(requireContext())*0.9).toInt())
         params.height=ViewGroup.LayoutParams.WRAP_CONTENT
         dialog!!.window!!.attributes=params as WindowManager.LayoutParams
     }

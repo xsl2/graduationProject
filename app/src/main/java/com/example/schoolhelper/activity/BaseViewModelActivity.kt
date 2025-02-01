@@ -18,6 +18,7 @@ open class BaseViewModelActivity<VB : ViewBinding> : BaseLogicActivity() {
 
         //调用inflate方法，创建viewBinding
         binding = ReflectUtil.newViewBinding(layoutInflater, javaClass)
+//        ReflectUtil.newViewBinding 使用反射来创建 ViewBinding 实例。这使得你可以根据当前 Activity 的类名动态生成相应的 ViewBinding 对象，避免了手动写每个类的 ViewBinding 实例化代码。
 
         setContentView(binding.root)
     }

@@ -7,8 +7,20 @@ import com.example.schoolhelper.component.login.LoginHomeActivity
 import com.example.schoolhelper.databinding.ActivityMainBinding
 import com.example.schoolhelper.databinding.ItemTabBinding
 import com.example.schoolhelper.util.Constant
+import com.example.superui.util.SuperDarkUtil
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
+
+    override fun initViews() {
+        super.initViews()
+        //设置全屏，沉浸式状态栏
+        QMUIStatusBarHelper.translucent(this)
+        if (SuperDarkUtil.isDark(this)) QMUIStatusBarHelper.setStatusBarDarkMode(this) else QMUIStatusBarHelper.setStatusBarLightMode(this)
+//        tv_author=findViewById<TextView>(R.id.tv_author)
+
+    }
+
     override fun initDatum() {
 //        binding.apply {
 //            pager.offscreenPageLimit= indicatorTitles.size

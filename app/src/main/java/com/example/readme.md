@@ -56,4 +56,4 @@ private fun prepareNext() {
 
 ## component/guide
 
-引导界面，有登录/注册，立即体验按钮，无论点哪个都会，
+引导界面，有登录/注册，立即体验按钮，点击立即体验进入MainActivity界面，否则调用注册登录界面。

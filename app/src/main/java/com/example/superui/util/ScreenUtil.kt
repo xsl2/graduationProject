@@ -8,43 +8,42 @@ import android.view.WindowManager
  * 屏幕工具类
  */
 object ScreenUtil {
+
+    // 获取屏幕的DisplayMetrics信息
+    private fun getDisplayMetrics(context: Context): DisplayMetrics {
+        val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val outDisplayMetrics = DisplayMetrics()
+        wm.defaultDisplay.getMetrics(outDisplayMetrics)
+        return outDisplayMetrics
+    }
+
     /**
      * 获取屏幕宽度
      *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return 屏幕宽度（像素）
      */
-    fun getScreenWith(context: Context): Int {
-        //获取window管理器
-        val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-
-        //创建显示对象
-        val outDisplayMetrics = DisplayMetrics()
-
-        //获取默认显示对象
-        wm.defaultDisplay.getMetrics(outDisplayMetrics)
-
-        //返回屏幕宽度
-        return outDisplayMetrics.widthPixels
+    fun getScreenWidth(context: Context): Int {
+        return getDisplayMetrics(context).widthPixels
     }
 
     /**
      * 获取屏幕高度
      *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return 屏幕高度（像素）
      */
     fun getScreenHeight(context: Context): Int {
-        //获取window管理器
-        val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        return getDisplayMetrics(context).heightPixels
+    }
 
-        //创建显示对象
-        val outDisplayMetrics = DisplayMetrics()
-
-        //获取默认显示对象
-        wm.defaultDisplay.getMetrics(outDisplayMetrics)
-
-        //返回屏幕宽度
-        return outDisplayMetrics.heightPixels
+    /**
+     * 获取屏幕的密度
+     *
+     * @param context 上下文
+     * @return 屏幕密度（如：2.0）
+     */
+    fun getScreenDensity(context: Context): Float {
+        return context.resources.displayMetrics.density
     }
 }

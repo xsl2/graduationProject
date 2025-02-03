@@ -28,6 +28,9 @@ open abstract class BaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View?
 
+    /**
+     * onViewCreated 是 Fragment 生命周期中的一个方法，它会在 onCreateView 后被调用，确保视图已经被创建并可以进行操作。
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()

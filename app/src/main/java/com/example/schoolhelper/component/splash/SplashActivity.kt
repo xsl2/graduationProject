@@ -32,9 +32,10 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
     override fun initDatum() {
         super.initDatum()
         binding.tvAuthor.text = "designed by xsl ${SuperDateUtil.currentYear()}"
+        Log.d("xsl1", DefaultPreferenceUtil.getInstance(this).isAcceptTermsServiceAgreement.toString())
         if(DefaultPreferenceUtil.getInstance(this).isAcceptTermsServiceAgreement)
         {
-            //已经同意了
+            //已经同意了服务条款,接下来进行权限申请
             requestPermission()
         }
         else
@@ -93,7 +94,9 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
         TermServiceDialogDialogFragment.show(supportFragmentManager
         ) { Log.d(TAG, "onClick: primary")
             DefaultPreferenceUtil.getInstance(this).setAcceptTermsServiceAgreement()
+            requestPermission()
         }
+
     }
     companion object{
         const val TAG="SplashActivity"

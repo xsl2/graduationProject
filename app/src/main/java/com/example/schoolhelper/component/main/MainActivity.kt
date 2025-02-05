@@ -12,6 +12,7 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
 
+
     override fun initViews() {
         super.initViews()
         //设置全屏，沉浸式状态栏
@@ -22,10 +23,10 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
     }
 
     override fun initDatum() {
-//        binding.apply {
-//            pager.offscreenPageLimit= indicatorTitles.size
-//            pager.adapter=MainAdapter(this@MainActivity, indicatorTitles.size)
-//        }
+        binding.apply {
+            pager.offscreenPageLimit= indicatorTitles.size
+            pager.adapter=MainAdapter(this@MainActivity, indicatorTitles.size)
+        }
 
         //底部tab
         for (i in indicatorTitles.indices) {
@@ -52,14 +53,14 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
         private val indicatorTitles =
             intArrayOf(
                 R.string.discovery,
-//                R.string.video,
-//                R.string.category,
+                R.string.video,
+                R.string.category,
                 R.string.me
             )
         private val indicatorIcons = intArrayOf(
             R.drawable.selector_tab_discovery,
-//            R.drawable.selector_tab_video,
-//            R.drawable.selector_tab_category,
+            R.drawable.selector_tab_video,
+            R.drawable.selector_tab_category,
             R.drawable.selector_tab_me
         )
     }

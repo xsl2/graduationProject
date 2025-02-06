@@ -1,12 +1,13 @@
 package com.example.schoolhelper.component.content
 
 import android.os.Bundle
-import com.example.schoolhelper.component.guide.GuideFragment
 import com.example.schoolhelper.databinding.FragmentContentBinding
 import com.example.schoolhelper.fragment.BaseViewModelFragment
 import com.example.schoolhelper.util.Constant
 
 class ContentFragment:BaseViewModelFragment<FragmentContentBinding>() {
+
+
     companion object{
         fun newInstance(categoryID:String?=null):ContentFragment{
             val args = Bundle()

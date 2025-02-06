@@ -74,9 +74,15 @@
             android:layout_marginLeft="@dimen/padding_meddle"
             android:src="@drawable/baseline_menu" />
     </LinearLayout>
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+     <com.example.schoolhelper.view.NestedScrollableHost
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:layout_weight="1">
+         <androidx.viewpager2.widget.ViewPager2
+             android:id="@+id/pager"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             />
+     </com.example.schoolhelper.view.NestedScrollableHost>
+
 </LinearLayout>

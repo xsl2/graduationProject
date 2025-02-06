@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:fitsSystemWindows="true">
+<!--        fitsSystemWindows间下面控件下移脱离状态栏-->
 
         <!-- 搜索容器-->
         <LinearLayout

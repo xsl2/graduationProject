@@ -1,5 +1,6 @@
 package com.example.schoolhelper.component.main
 
+import androidx.viewpager2.widget.ViewPager2
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
 import com.example.schoolhelper.R
 import com.example.schoolhelper.activity.BaseViewModelActivity
@@ -17,9 +18,23 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
         super.initViews()
         //设置全屏，沉浸式状态栏
         QMUIStatusBarHelper.translucent(this)
-        if (SuperDarkUtil.isDark(this)) QMUIStatusBarHelper.setStatusBarDarkMode(this) else QMUIStatusBarHelper.setStatusBarLightMode(this)
+//        if (SuperDarkUtil.isDark(this)) QMUIStatusBarHelper.setStatusBarDarkMode(this) else QMUIStatusBarHelper.setStatusBarLightMode(this)
 //        tv_author=findViewById<TextView>(R.id.tv_author)
+    }
 
+    override fun initListeners() {
+        super.initListeners()
+        binding.pager.registerOnPageChangeCallback(object:
+        ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                when(position)
+                {
+                    0,1->QMUIStatusBarHelper.setStatusBarDarkMode(hostActivity)
+                    else->QMUIStatusBarHelper.setStatusBarLightMode(hostActivity)
+                }
+            }
+        })
     }
 
     override fun initDatum() {

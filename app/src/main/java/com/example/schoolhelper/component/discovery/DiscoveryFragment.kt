@@ -1,6 +1,7 @@
 package com.example.schoolhelper.component.discovery
 
 import android.os.Bundle
+import com.example.schoolhelper.adapter.TabLayoutViewPager2Mediator
 import com.example.schoolhelper.databinding.FragmentDiscoveryBinding
 import com.example.schoolhelper.fragment.BaseViewModelFragment
 import com.example.schoolhelper.util.DataUtil
@@ -14,6 +15,8 @@ class DiscoveryFragment : BaseViewModelFragment<FragmentDiscoveryBinding>() {
         super.initDatum()
         binding.apply {
             pager.adapter=DiscoveryAdapter(requireActivity(),DataUtil.categories)
+            TabLayoutViewPager2Mediator(indicator,pager){_,_->
+            }.attach()
 
         }
     }

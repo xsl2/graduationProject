@@ -12,7 +12,7 @@ import com.example.schoolhelper.util.ReflectUtil
  * ViewBinding 是 Android Jetpack 提供的一种自动生成的类，它提供对布局文件中视图的引用，帮助减少 findViewById 的使用，提高代码的类型安全。
  *
  */
-abstract class BaseViewModelFragment<VB : ViewBinding> : BaseCommonFragment() {
+abstract class BaseViewModelFragment<VB : ViewBinding> : BaseLogicFragment() {
     private var _binding: VB? = null
     protected val binding get() = _binding!!
 

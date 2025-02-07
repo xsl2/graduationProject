@@ -129,7 +129,26 @@ dependencies {
     implementation ("com.github.angcyo.DslTablayout:TabLayout:3.5.3")
     implementation ("com.github.angcyo.DslTablayout:ViewPager2Delegate:3.5.3")
 
+    //封装了RecyclerView
+    //提供更高层次的接口
+    //https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    implementation (libs.baserecyclerviewadapterhelper)
 
+    //apache common lang3工具包
+    //提供了StringUtils等这样的类
+    //http://commons.apache.org/proper/commons-lang/
+    implementation ("org.apache.commons:commons-lang3:3.8")
+    implementation(libs.protolite.well.known.types)
+
+    //图片加载框架，还引用他目的是，coil有些功能不好实现
+    //https://github.com/bumptech/glide
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation ("androidx.appcompat:appcompat:1.4.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+
+    //更方便的日期时间，运算，解析格式化框架
+    //https://www.joda.org/joda-time/index.html
+    implementation ("joda-time:joda-time:2.12.2")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

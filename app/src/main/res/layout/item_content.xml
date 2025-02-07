@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_outer">
+<!--    发现界面中的一个新闻，每个新闻都按照这个模板按列表展示
+        最大显示3行，超出部分用。。。表示，每行距距1.2倍
+-->
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.2"
+        android:text="这是一个新闻测试标题错过DeepSeek，毕业生悔不当初：机遇只在一念间？DeepSeek，这款新兴的AI工具，近期在公众视野中炙手可热，其影响力远远超越了以往任何一款同类产品。与ChatGPT最初仅受部分大学生青睐不同，DeepSeek迅速吸引了广泛用户群体，包括众多家长，他们利用这一工具查询院校及专业信息，纷纷感叹科技对于生活方式的深刻改变。一款得心应手的AI工具，竟然如此轻易地打破了长久以来的信息壁垒。"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/s17"
+        />
+<!--    视频封面，使用约束布局-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/video_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d5"
+        android:visibility="gone">
+<!--        视频封面，不要imageView原因是因为这边要实现圆角-->
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder"
+            app:layout_constraintDimensionRatio="H,0.562"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedCornerImageStyle"/>
+        <!--视频时长-->
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/padding_meddle"
+            android:layout_marginBottom="@dimen/padding_meddle"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- 播放按钮-->
+        <ImageView
+            android:id="@+id/play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/player_pause"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--更多信息-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_small"
+        android:orientation="horizontal">
+        <!--        昵称-->
+        <TextView
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="爱学啊"
+            android:textColor="?attr/colorOnTextSecondary"
+            android:textSize="@dimen/s12" />
+
+        <!--        评论数-->
+        <TextView
+            android:id="@+id/comments_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_outer"
+            android:text="爱学啊"
+            android:textColor="?attr/colorOnTextSecondary"
+            android:textSize="@dimen/s12" />
+
+        <!--        日期-->
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_outer"
+            android:text="5分钟前"
+            android:textColor="?attr/colorOnTextSecondary"
+            android:textSize="@dimen/s12" />
+    </LinearLayout>
+
+</LinearLayout>

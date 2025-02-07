@@ -57,3 +57,9 @@ private fun prepareNext() {
 ## component/guide
 
 引导界面，有登录/注册，立即体验按钮，点击立即体验进入MainActivity界面，否则调用注册登录界面。
+
+## ViewModel
+
+`ViewModel` 中通常会使用 `LiveData` 来包装数据。`LiveData` 允许 `Activity` 或 `Fragment` 订阅并观察数据，且只有当组件处于活跃状态（如 `onStart()` 和 `onResume()`）时，`LiveData` 才会向观察者（如 `Activity` 或 `Fragment`）发送数据更新。
+
+`LiveData` 会自动管理数据的生命周期，当 `Activity` 或 `Fragment` 被销毁时，`LiveData` 会停止发送数据更新，避免了不必要的内存泄漏或访问空的视图。

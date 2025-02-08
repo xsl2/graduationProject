@@ -1,4 +1,5 @@
 package com.example.schoolhelper.component.api
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.schoolhelper.AppContext
 import com.example.schoolhelper.config.Config
 import com.example.schoolhelper.util.JSONUtil
@@ -49,10 +50,9 @@ object NetworkModule {
             //添加到网络框架中
             okhttpClientBuilder.addInterceptor(loggingInterceptor)
 
-//            //添加chucker实现应用内显示网络请求信息拦截器
-//            okhttpClientBuilder.addInterceptor(
-//                ChuckerInterceptor.Builder(AppContext.instance).build()
-//            )
+            //添加chucker实现应用内显示网络请求信息拦截器
+            okhttpClientBuilder.addInterceptor(ChuckerInterceptor.Builder(AppContext.instance).build()
+            )
         }
         return okhttpClientBuilder.build()
     }

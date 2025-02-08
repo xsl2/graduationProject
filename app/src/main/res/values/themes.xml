@@ -15,6 +15,8 @@
         <item name="colorDivider">@color/black183</item>
 
         <item name="colorOnTextSecondary">@color/black80</item>
+        <!-- RecycleView中分割线-->
+        <item name="android:listDivider">@drawable/shape_divider</item>
 
     </style>
 

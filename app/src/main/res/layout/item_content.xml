@@ -19,14 +19,22 @@
         android:textColor="?attr/colorOnSurface"
         android:textSize="@dimen/s17"
         />
-<!--    视频封面，使用约束布局-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d5"
+        android:visibility="gone"
+        />
+
+    <!--    视频封面，使用约束布局-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/video_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/d5"
         android:visibility="gone">
-<!--        视频封面，不要imageView原因是因为这边要实现圆角-->
+        <!--        视频封面，不要imageView原因是因为这边要实现圆角-->
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/icon"

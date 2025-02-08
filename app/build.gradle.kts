@@ -150,6 +150,36 @@ dependencies {
     //https://www.joda.org/joda-time/index.html
     implementation ("joda-time:joda-time:2.12.2")
 
+    //集合工具类
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
+    implementation ("org.apache.commons:commons-collections4:4.4")
+
+    //通过OkHttp的拦截器机制
+    //实现在应用通知栏显示网络请求功能
+    //https://github.com/ChuckerTeam/chucker
+    debugImplementation ("com.github.chuckerteam.chucker:library:4.1.0")
+    releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:4.1.0")
+
+    //类似微信图片预览框架
+    //https://github.com/wanglu1209/PhotoViewer
+    implementation ("com.github.wanglu1209:PhotoViewer:0.50")
+
+    //Google实现的Java核心工具类
+    //相对于Apache的工具包来说
+    //Apache更多的用在Java Web项目
+    //而Guava在Android中用的更多
+    //具体的性能这里就不比较了
+    //大家感兴趣可以搜索下
+    //https://github.com/google/guava
+    implementation ("com.google.guava:guava:31.1-android")
+
+    //region 下拉刷新，上拉加载更多这里是第三方控件
+    //下拉刷新框架
+    //https://github.com/scwang90/SmartRefreshLayout
+    implementation ("io.github.scwang90:refresh-layout-kernel:2.0.5")
+    implementation ("io.github.scwang90:refresh-header-classics:2.0.5")     //经典刷新头
+    implementation ("io.github.scwang90:refresh-footer-classics:2.0.5")    //经典加载头
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

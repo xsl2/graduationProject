@@ -17,6 +17,11 @@ class AppContext: Application() {
         Log.d(TAG, "initMMKV: $rootDir")
 
     }
+
+    fun logout() {
+        TODO("Not yet implemented")
+    }
+
     companion object{
         lateinit var instance: AppContext
         const val TAG="AppContext"

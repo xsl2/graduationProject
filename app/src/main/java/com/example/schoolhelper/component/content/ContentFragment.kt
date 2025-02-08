@@ -3,6 +3,7 @@ package com.example.schoolhelper.component.content
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,6 +35,13 @@ class ContentFragment:BaseViewModelFragment<FragmentContentBinding>() {
 
         val viewModelFactory = ContentViewModelFactory(requireArguments().getString(Constant.ID))
         viewModel=ViewModelProvider(this,viewModelFactory).get(ContentViewModel::class.java)
+
+//        viewModel.tip.observe(this){
+//            Toast.makeText(hostActivity,it,Toast.LENGTH_SHORT).show()
+//            processRefreshAndLoadMoreStatus(false)
+//        }
+        initViewModel(viewModel)
+
         adapter=ContentAdapter(viewModel)
         binding.list.adapter=adapter
         lifecycleScope.launch {
@@ -68,6 +76,12 @@ class ContentFragment:BaseViewModelFragment<FragmentContentBinding>() {
         //next=null，表示没有更多数据了
         binding.refresh.finishLoadMore(500, success, noMore)
     }
+
+    override fun onError() {
+        super.onError()
+        processRefreshAndLoadMoreStatus(false)
+    }
+
 
     private fun previewMedias(data: PreviewMediaPageData) {
         //将List转为ArrayList

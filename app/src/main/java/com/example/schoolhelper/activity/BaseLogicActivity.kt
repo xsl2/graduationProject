@@ -3,6 +3,7 @@ package com.example.schoolhelper.activity
 import com.example.schoolhelper.AppContext
 import com.example.schoolhelper.R
 import com.example.schoolhelper.entity.response.BaseResponse
+import com.example.schoolhelper.model.BaseViewModel
 import com.example.superui.extension.longToast
 import com.example.superui.extension.shortToast
 import com.example.superui.util.SuperNetworkUtil
@@ -19,6 +20,36 @@ open class BaseLogicActivity:BaseCommonActivity() {
     protected val hostActivity:BaseLogicActivity
         protected get() = this
 
+    /**
+     * 初始化通用ViewModel逻辑
+     */
+
+    protected fun initViewModel(viewModel: BaseViewModel) {
+        //关闭界面
+        viewModel.finishPage.observe(this) {
+            finish()
+        }
+
+        //本地提示
+        viewModel.tip.observe(this) {
+            onTip(it)
+        }
+
+        //异常
+        viewModel.exception.observe(this) {
+            onException(it)
+        }
+
+        //网络响应业务失败
+        viewModel.response.observe(this) {
+            onResponse(it)
+        }
+
+        //加载提示
+//        viewModel.loading.observe(this) {
+//            if (StringUtils.isNotBlank(it)) showLoading(it) else hideLoading()
+//        }
+    }
 
     open fun onTip(data: Int) {
         data.shortToast()

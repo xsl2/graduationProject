@@ -1,14 +1,11 @@
 package com.example.schoolhelper.component.content
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
-import com.example.schoolhelper.R
-import com.example.schoolhelper.component.category.Category
 import com.example.schoolhelper.entity.response.Meta
+import com.example.schoolhelper.entity.response.onSuccess
 import com.example.schoolhelper.model.BaseViewModel
-import com.example.schoolhelper.repository.DefaultNetWorkReposity
+import com.example.schoolhelper.repository.DefaultNetworkRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -38,19 +35,11 @@ class ContentViewModel(private val categoryId:String?):BaseViewModel() {
         this.lastId=lastId
         //请求数据
         //DefaultNetWorkReposity.contents(lastID)因为这是一个挂起函数，需要在协程中实现，在viewmodel中用viewModelScope.launch
-        viewModelScope.launch {
-            try {
-                val r = DefaultNetWorkReposity.contents(lastId,categoryId = categoryId)
-                //现在需要把r的数据传回Fragment，可以使用回调，这里也可以使用LiveData，也可以使用flow
-                if(r.isSucceeded){
-                    _data.emit(r.data!!)
-                }else{
-                    _response.value=r
+        viewModelScope.launch(coroutineExceptionHandler) {
+            DefaultNetworkRepository.contents(lastId, categoryId = categoryId)
+                .onSuccess(viewModel) {
+                    _data.emit(it)
                 }
-            } catch (e: Exception) {
-                _exception.value=e
-            }
-
         }
     }
 

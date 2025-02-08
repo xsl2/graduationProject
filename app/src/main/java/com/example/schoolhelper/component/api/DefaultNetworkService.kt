@@ -36,6 +36,8 @@ interface DefaultNetworkService {
     @GET("v1/contents/{id}")
     suspend fun contentDetail(@Path("id") id: String): DetailResponse<Content>
 
+
+
 //    @GET("v1/users/{id}")
 //    suspend fun userDetail(@Path("id") id: String): DetailResponse<User>
 //

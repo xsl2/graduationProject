@@ -1,8 +1,5 @@
 package com.example.schoolhelper.fragment
 
-import android.view.View
-import androidx.annotation.IdRes
-
 abstract class BaseCommonDialogFragment:BaseDialogFragment() {
 
         /*findViewById() 是 Activity 和 View 中的一个方法，用于查找视图控件。Fragment 本身并不直接持有视图，
@@ -13,7 +10,7 @@ abstract class BaseCommonDialogFragment:BaseDialogFragment() {
         Fragment 并不是 Activity 或 View，它没有直接的视图层次结构。
         Fragment 的视图是在 onCreateView() 中由布局文件生成的，并且视图的创建是一个延迟的过程。在视图创建之前直接调用 findViewById() 是不安全的，因为它会尝试查找不存在的视图，导致崩溃或异常。
         */
-    fun <T :View?> findViewById(@IdRes id:Int):T{
-        return requireView().findViewById(id)
-    }
+//    fun <T :View?> findViewById(@IdRes id:Int):T{
+//        return requireView().findViewById(id)
+//    }
 }

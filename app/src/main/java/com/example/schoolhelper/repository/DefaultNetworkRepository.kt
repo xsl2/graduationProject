@@ -19,6 +19,11 @@ object DefaultNetworkRepository {
     private val service:DefaultNetworkService by lazy {
         DefaultNetworkService.create()
     }
+
+    suspend fun userDetail(id: String): DetailResponse<User> {
+        return service.userDetail(id)
+    }
+
     //挂起函数
     suspend fun contents(
         last: String? = null,

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.drake.channel.receiveEvent
 import com.example.schoolhelper.R
 import com.example.schoolhelper.activity.BaseTitleActivity
 import com.example.schoolhelper.activity.BaseViewModelActivity
@@ -27,6 +28,10 @@ class LoginHomeActivity : BaseTitleActivity<ActivityLoginHomeBinding>() {
 
         val content = Html.fromHtml(getString(R.string.user_agreement))
         binding.userAgreement.text = content
+
+        receiveEvent<LoginStatusChangedEvent> {
+            finish()
+        }
     }
 
     override fun initListeners() {

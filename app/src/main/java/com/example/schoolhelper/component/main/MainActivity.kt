@@ -1,21 +1,31 @@
 package com.example.schoolhelper.component.main
 
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
+import com.example.schoolhelper.AppContext
 import com.example.schoolhelper.R
 import com.example.schoolhelper.activity.BaseViewModelActivity
 import com.example.schoolhelper.component.login.LoginHomeActivity
+import com.example.schoolhelper.component.user.User
 import com.example.schoolhelper.component.userdetail.UserDetailActivity
 import com.example.schoolhelper.databinding.ActivityMainBinding
 import com.example.schoolhelper.databinding.ItemTabBinding
 import com.example.schoolhelper.util.Constant
+import com.example.schoolhelper.util.ImageUtil
 import com.example.schoolhelper.util.PreferenceUtil
+import com.example.superui.dialog.SuperDialog
+import com.example.superui.extension.hide
+import com.example.superui.extension.show
 import com.example.superui.process.SuperProcessUtil
 import com.example.superui.util.SuperDarkUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import kotlinx.coroutines.launch
 
 class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
+    private lateinit var viewModel: MainViewModel
 
 
     override fun initViews() {
@@ -52,10 +62,35 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
                 startActivity(LoginHomeActivity::class.java)
             }
         }
+
+        //退出登录点击
+        binding.primary.setOnClickListener { v ->
+            //弹出确认对话框
+            //防止用户误操作
+            //同时我们本质是想留住用户
+            SuperDialog.newInstance(supportFragmentManager)
+                .setTitleRes(R.string.confirm_logout)
+                .setOnClickListener {
+                    AppContext.instance.logout()
+                    showNotLogin()
+                    closeDrawer()
+                }.show()
+        }
     }
 
     override fun initDatum() {
         super.initDatum()
+        viewModel =
+            ViewModelProvider(this).get(MainViewModel::class.java)
+        initViewModel(viewModel)
+
+        lifecycleScope.launch {
+            viewModel.userData
+                .collect { data ->
+                    showUserData(data)
+                }
+        }
+
         //滚动控件
         binding.content.apply {
             pager.offscreenPageLimit= indicatorTitles.size
@@ -89,6 +124,42 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
     fun closeDrawer(): Unit {
         binding.drawer.closeDrawer(GravityCompat.START)
     }
+    override fun onResume() {
+        super.onResume()
+        showUserInfo()
+    }
+
+    //region 显示用户信息
+    private fun showUserInfo() {
+        if (PreferenceUtil.isLogin()) {
+            //已经登录了
+
+            //获取用户信息
+            viewModel.loadUserData()
+            binding.primary.show()
+        } else {
+            showNotLogin()
+        }
+    }
+
+    private fun showUserData(data: User) {
+        //显示头像
+        ImageUtil.showAvatar(binding.avatar, data.icon)
+
+        //显示昵称
+        binding.nickname.setText(data.nickname)
+    }
+
+    /**
+     * 显示未登录状态
+     */
+    private fun showNotLogin() {
+        binding.nickname.setText(R.string.login_or_register)
+        binding.avatar.setImageResource(R.drawable.default_avatar)
+        binding.primary.hide()
+    }
+
+    //endregion
 
 
     companion object {

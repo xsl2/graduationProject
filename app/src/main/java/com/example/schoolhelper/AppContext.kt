@@ -3,6 +3,9 @@ package com.example.schoolhelper
 import android.app.Application
 import android.nfc.Tag
 import android.util.Log
+import com.drake.channel.sendEvent
+import com.example.schoolhelper.component.login.LoginStatusChangedEvent
+import com.example.schoolhelper.util.PreferenceUtil
 import com.tencent.mmkv.MMKV
 
 class AppContext: Application() {
@@ -19,11 +22,21 @@ class AppContext: Application() {
     }
 
     fun logout() {
-        TODO("Not yet implemented")
+        logoutSilence()
+    }
+
+    private fun logoutSilence() {
+        //清除登录相关信息
+        PreferenceUtil.logout()
+        loginStatusChanged()
     }
 
     fun onLogin() {
+        loginStatusChanged()
+    }
 
+    private fun loginStatusChanged() {
+        sendEvent(LoginStatusChangedEvent())
     }
 
     companion object{

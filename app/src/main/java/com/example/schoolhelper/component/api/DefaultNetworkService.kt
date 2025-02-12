@@ -4,6 +4,8 @@ import com.example.schoolhelper.component.comment.Comment
 import com.example.schoolhelper.component.content.Content
 import com.example.schoolhelper.component.login.Session
 import com.example.schoolhelper.component.user.User
+import com.example.schoolhelper.entity.Base
+import com.example.schoolhelper.entity.BaseId
 import com.example.schoolhelper.entity.response.DetailResponse
 import com.example.schoolhelper.entity.response.ListResponse
 import retrofit2.http.Body
@@ -62,30 +64,30 @@ interface DefaultNetworkService {
         @Body data: User
     ): DetailResponse<Session>
 
-//    @POST("v1/users")
-//    suspend fun register(
-//        @Body data: User
-//    ): DetailResponse<BaseId>
-//
-//    //region 验证码
-//    /**
-//     * 发送验证码
-//     *
-//     * @param data
-//     * @return
-//     */
+    @POST("v1/users")
+    suspend fun register(
+        @Body data: User
+    ): DetailResponse<BaseId>
+
+    //region 验证码
+    /**
+     * 发送验证码
+     *
+     * @param data
+     * @return
+     */
 //    @POST("v1/codes")
 //    suspend fun sendCode(
 //        @Query(value = "style") style: Int,
 //        @Body data: CodeRequest
 //    ): DetailResponse<Base>
-//
-//    /**
-//     * 校验验证码
-//     *
-//     * @param data
-//     * @return
-//     */
+
+    /**
+     * 校验验证码
+     *
+     * @param data
+     * @return
+     */
 //    @POST("v1/codes/check")
 //    suspend fun checkCode(
 //        @Body data: CodeRequest

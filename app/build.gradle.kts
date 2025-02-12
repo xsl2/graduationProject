@@ -189,6 +189,10 @@ dependencies {
     implementation ("io.github.scwang90:refresh-footer-classics:2.0.5")    //经典加载头
 
 
+    //基于协程跨界面通讯
+    //https://github.com/liangjingkanji/Channel
+    implementation ("com.github.liangjingkanji:Channel:1.1.5")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

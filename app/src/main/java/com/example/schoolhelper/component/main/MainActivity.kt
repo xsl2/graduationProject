@@ -1,13 +1,17 @@
 package com.example.schoolhelper.component.main
 
+import androidx.core.view.GravityCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
 import com.example.schoolhelper.R
 import com.example.schoolhelper.activity.BaseViewModelActivity
 import com.example.schoolhelper.component.login.LoginHomeActivity
+import com.example.schoolhelper.component.userdetail.UserDetailActivity
 import com.example.schoolhelper.databinding.ActivityMainBinding
 import com.example.schoolhelper.databinding.ItemTabBinding
 import com.example.schoolhelper.util.Constant
+import com.example.schoolhelper.util.PreferenceUtil
+import com.example.superui.process.SuperProcessUtil
 import com.example.superui.util.SuperDarkUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
@@ -24,7 +28,7 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
 
     override fun initListeners() {
         super.initListeners()
-        binding.pager.registerOnPageChangeCallback(object:
+        binding.content.pager.registerOnPageChangeCallback(object :
         ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -35,10 +39,25 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
                 }
             }
         })
+        //关闭应用点击
+        binding.closeApp.setOnClickListener {
+            SuperProcessUtil.killApp()
+        }
+        //用户容器点击
+        binding.userContainer.setOnClickListener {
+            closeDrawer()
+            if (PreferenceUtil.isLogin()) {
+                startActivityExtraId(UserDetailActivity::class.java, PreferenceUtil.getUserId())
+            } else {
+                startActivity(LoginHomeActivity::class.java)
+            }
+        }
     }
 
     override fun initDatum() {
-        binding.apply {
+        super.initDatum()
+        //滚动控件
+        binding.content.apply {
             pager.offscreenPageLimit= indicatorTitles.size
             pager.adapter=MainAdapter(this@MainActivity, indicatorTitles.size)
         }
@@ -48,18 +67,29 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             ItemTabBinding.inflate(layoutInflater).apply {
                 content.setText(indicatorTitles[i])
                 icon.setImageResource(indicatorIcons[i])
-                binding.indicator.addView(root)
+                binding.content.indicator.addView(root)
             }
         }
-        ViewPager2Delegate.install(binding.pager,binding.indicator,false)
+        ViewPager2Delegate.install(binding.content.pager, binding.content.indicator, false)
 
-        super.initDatum()
+
+
         val action=intent.action
         if(Constant.ACTION_LOGIN==action)
         {
             startActivity(LoginHomeActivity::class.java)
         }
+
     }
+
+    fun openDrawer() {
+        binding.drawer.openDrawer(GravityCompat.START)
+    }
+
+    fun closeDrawer(): Unit {
+        binding.drawer.closeDrawer(GravityCompat.START)
+    }
+
 
     companion object {
         /**

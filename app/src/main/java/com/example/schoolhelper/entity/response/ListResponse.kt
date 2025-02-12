@@ -2,7 +2,6 @@ package com.example.schoolhelper.entity.response
 
 import com.example.schoolhelper.model.BaseViewModel
 
-
 /**
  * 解析列表网络请求
  */

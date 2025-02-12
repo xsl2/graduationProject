@@ -1,14 +1,18 @@
 package com.example.schoolhelper.component.content
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.schoolhelper.component.articledetail.ArticleDetailActivity
 import com.example.schoolhelper.databinding.FragmentContentBinding
 import com.example.schoolhelper.fragment.BaseViewModelFragment
 import com.example.schoolhelper.util.Constant
@@ -55,11 +59,22 @@ class ContentFragment:BaseViewModelFragment<FragmentContentBinding>() {
                         adapter.addAll(it)
                     }
                 }
-                adapter.submitList(it.data)
+//                adapter.submitList(it.data)
                 processRefreshAndLoadMoreStatus(true, it.data?.isEmpty() ?: true)
             }
         }
-        viewModel.addMore()
+//        viewModel.addMore()
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                // 在组件处于 STARTED 状态时执行协程任务
+                viewModel.toArticleDetail.collect { id ->
+                    val intent = Intent(requireContext(), ArticleDetailActivity::class.java)
+                    intent.putExtra(Constant.ID, id)
+                    startActivity(intent)
+                }
+            }
+        }
 
         lifecycleScope.launch {
             viewModel.previewMedia.collect {

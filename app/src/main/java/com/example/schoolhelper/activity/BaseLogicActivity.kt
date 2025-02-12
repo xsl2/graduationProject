@@ -6,7 +6,9 @@ import com.example.schoolhelper.entity.response.BaseResponse
 import com.example.schoolhelper.model.BaseViewModel
 import com.example.superui.extension.longToast
 import com.example.superui.extension.shortToast
+import com.example.superui.util.SuperDarkUtil
 import com.example.superui.util.SuperNetworkUtil
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketException
@@ -23,6 +25,18 @@ open class BaseLogicActivity:BaseCommonActivity() {
     /**
      * 初始化通用ViewModel逻辑
      */
+
+
+    override fun initViews() {
+        super.initViews()
+        if (SuperDarkUtil.isDark(this)) {
+            //状态栏文字白色
+            QMUIStatusBarHelper.setStatusBarDarkMode(this)
+        } else {
+            //状态栏文字黑色
+            QMUIStatusBarHelper.setStatusBarLightMode(this)
+        }
+    }
 
     protected fun initViewModel(viewModel: BaseViewModel) {
         //关闭界面

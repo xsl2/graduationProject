@@ -22,6 +22,10 @@ class AppContext: Application() {
         TODO("Not yet implemented")
     }
 
+    fun onLogin() {
+
+    }
+
     companion object{
         lateinit var instance: AppContext
         const val TAG="AppContext"

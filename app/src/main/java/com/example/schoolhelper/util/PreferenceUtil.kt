@@ -30,9 +30,9 @@ object PreferenceUtil {
      *
      * @return
      */
-//    fun isLogin(): Boolean {
-//        return Constant.ANONYMOUS != getUserId()
-//    }
+    fun isLogin(): Boolean {
+        return Constant.ANONYMOUS != getUserId()
+    }
 
     /**
      * 设置用户Id
@@ -48,9 +48,9 @@ object PreferenceUtil {
      *
      * @return
      */
-//    fun getUserId(): String {
-//        return p.decodeString(USER_ID, Constant.ANONYMOUS)!!
-//    }
+    fun getUserId(): String {
+        return p.decodeString(USER_ID, Constant.ANONYMOUS)!!
+    }
 
     /**
      * 设置用户Token

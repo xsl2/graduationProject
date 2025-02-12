@@ -12,6 +12,13 @@
         <!-- 分割线颜色 -->
         <item name="colorDivider">@color/black33</item>
 
+        <!--侧滑背景-->
+        <item name="colorSlideBackground">@color/divider</item>
+
+        <!--colorSurface点击颜色-->
+        <item name="colorSurfaceClick">@color/black322</item>
+
+
     </style>
 
 

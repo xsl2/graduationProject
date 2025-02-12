@@ -1,6 +1,9 @@
 package com.example.schoolhelper.component.api
 
+import com.example.schoolhelper.component.comment.Comment
 import com.example.schoolhelper.component.content.Content
+import com.example.schoolhelper.component.login.Session
+import com.example.schoolhelper.component.user.User
 import com.example.schoolhelper.entity.response.DetailResponse
 import com.example.schoolhelper.entity.response.ListResponse
 import retrofit2.http.Body
@@ -38,27 +41,27 @@ interface DefaultNetworkService {
 
 
 
-//    @GET("v1/users/{id}")
-//    suspend fun userDetail(@Path("id") id: String): DetailResponse<User>
-//
-//    /**
-//     * 评论列表
-//     *
-//     * @return
-//     */
-//    @GET("v1/comments")
-//    suspend fun comments(
-//        @Query(value = "article_id") articleId: String?,
-//        @Query(value = "parent_id") parentId: String?,
-//        @Query(value = "page") page: Int,
-//        @Query(value = "size") size: Int
-//    ): ListResponse<Comment>
-//
-//    @POST("v1/sessions")
-//    suspend fun login(
-//        @Body data: User
-//    ): DetailResponse<Session>
-//
+    @GET("v1/users/{id}")
+    suspend fun userDetail(@Path("id") id: String): DetailResponse<User>
+
+    /**
+     * 评论列表
+     *
+     * @return
+     */
+    @GET("v1/comments")
+    suspend fun comments(
+        @Query(value = "article_id") articleId: String?,
+        @Query(value = "parent_id") parentId: String?,
+        @Query(value = "page") page: Int,
+        @Query(value = "size") size: Int
+    ): ListResponse<Comment>
+
+    @POST("v1/sessions")
+    suspend fun login(
+        @Body data: User
+    ): DetailResponse<Session>
+
 //    @POST("v1/users")
 //    suspend fun register(
 //        @Body data: User

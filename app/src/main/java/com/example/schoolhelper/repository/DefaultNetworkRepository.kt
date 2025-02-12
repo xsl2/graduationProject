@@ -1,7 +1,10 @@
 package com.example.schoolhelper.repository
 
 import com.example.schoolhelper.component.api.DefaultNetworkService
+import com.example.schoolhelper.component.comment.Comment
 import com.example.schoolhelper.component.content.Content
+import com.example.schoolhelper.component.login.Session
+import com.example.schoolhelper.component.user.User
 import com.example.schoolhelper.entity.response.DetailResponse
 import com.example.schoolhelper.entity.response.ListResponse
 
@@ -29,6 +32,20 @@ object DefaultNetworkRepository {
     suspend fun contentDetail(id: String): DetailResponse<Content> {
         return service.contentDetail(id)
     }
+    suspend fun login(data: User): DetailResponse<Session> {
+        return service.login(data)
+    }
+
+
+    suspend fun comments(
+        articleId: String? = null,
+        parentId: String? = null,
+        page: Int = 1,
+        size: Int = 10
+    ): ListResponse<Comment> {
+        return service.comments(articleId, parentId, page, size)
+    }
+
 
 
 }

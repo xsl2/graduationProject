@@ -44,7 +44,7 @@ class ContentViewModel(private val categoryId:String?):BaseViewModel() {
     }
 
     /**
-     * 列表item点击
+     * 列表item点击事件监听
      */
     fun itemClick(data: Content) {
         viewModelScope.launch {

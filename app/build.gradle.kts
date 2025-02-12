@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -75,6 +76,10 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    //添加所有libs目录里面的jar，aar
+//    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+//    implementation(files("libs").filter { it.extension == "*.jar" || it.extension == "*.aar" })
+    implementation(files("libs/jetified-clearable-edittext-0.0.8.aar"))
 
     //UI框架，主要是用他的工具类，也可以单独拷贝出来
     //https://qmuiteam.com/android/get-started
@@ -117,6 +122,9 @@ dependencies {
     //endregion
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+
+    //https://developer.android.google.cn/jetpack/androidx/releases/lifecycle?hl=zh-cn
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")//lifecycle依赖，26-1,14
 
     implementation(libs.androidx.room.common)
     //apache common lang3工具包
@@ -179,6 +187,8 @@ dependencies {
     implementation ("io.github.scwang90:refresh-layout-kernel:2.0.5")
     implementation ("io.github.scwang90:refresh-header-classics:2.0.5")     //经典刷新头
     implementation ("io.github.scwang90:refresh-footer-classics:2.0.5")    //经典加载头
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

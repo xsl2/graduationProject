@@ -2,6 +2,7 @@ package com.example.schoolhelper.component.discovery
 
 import android.os.Bundle
 import com.example.schoolhelper.adapter.TabLayoutViewPager2Mediator
+import com.example.schoolhelper.component.main.MainActivity
 import com.example.schoolhelper.databinding.FragmentDiscoveryBinding
 import com.example.schoolhelper.fragment.BaseViewModelFragment
 import com.example.schoolhelper.util.DataUtil
@@ -20,6 +21,14 @@ class DiscoveryFragment : BaseViewModelFragment<FragmentDiscoveryBinding>() {
 
         }
     }
+
+    override fun initListeners() {
+        super.initListeners()
+        binding.menu.setOnClickListener {
+            (hostActivity as MainActivity).openDrawer()
+        }
+    }
+
 
     companion object
     {
